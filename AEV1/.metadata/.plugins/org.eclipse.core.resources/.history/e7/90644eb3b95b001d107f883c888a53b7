@@ -1,0 +1,81 @@
+package florida;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+public class Lanzadora {
+
+	public static long fin = 0; // Tiempo ejecución
+	public static long inicio = 0; // Tiempo ejecución
+	public static Vista vista;
+	private static ActionListener actionListenerCrearCroquetas;
+	private static int Pollo = 0;
+	private static int Queso = 0;
+	private static int Bacalao = 0;
+	private static int Jamon = 0;
+	public static void main(String[] args) throws InterruptedException {
+
+		vista = new Vista();
+
+		try {
+			actionListenerCrearCroquetas = new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try {
+						
+						while(true)
+						if(vista.getTextFieldPrioridadPollo().getText() == null || vista.getTextFieldPrioridadQueso().getText() == null || vista.getTextFieldPrioridadBacalao().getText()  == null || vista.getTextFieldPrioridadJamon().getText() == null) {
+							JOptionPane.showMessageDialog(null, "Tienes que rellenar todos los campos", "Paquetes",
+							JOptionPane.ERROR_MESSAGE);
+						} else {
+							break;
+						}
+						
+						Pollo = Integer.parseInt(vista.getTextFieldPollo().getText());
+						Queso = Integer.parseInt(vista.getTextFieldQueso().getText());
+						Bacalao = Integer.parseInt(vista.getTextFieldBacalao().getText());
+						Jamon = Integer.parseInt(vista.getTextFieldJamon().getText());
+
+						int prioridadPollo = Integer.parseInt(vista.getTextFieldPrioridadPollo().getText());
+						int prioridadQueso = Integer.parseInt(vista.getTextFieldPrioridadQueso().getText());
+						int prioridadBacalao = Integer.parseInt(vista.getTextFieldPrioridadBacalao().getText());
+						int prioridadJamon = Integer.parseInt(vista.getTextFieldPrioridadJamon().getText());
+
+						if (Pollo % 6 != 0 || Queso % 6 != 0 || Bacalao % 6 != 0 || Jamon % 6 != 0) {
+							JOptionPane.showMessageDialog(null, "Los pedidos tienen que ser multiplos de 6", "Paquetes",
+									JOptionPane.ERROR_MESSAGE);
+						}else {
+							try {
+								Procesadora.lanzarCroquetas(Jamon, Pollo, Bacalao, Queso, prioridadJamon, prioridadPollo,
+										prioridadBacalao, prioridadQueso);
+							} catch (InterruptedException e1) {	
+								e1.printStackTrace();
+							}
+						}
+						
+					} catch(NumberFormatException e1) {
+						e1.printStackTrace();
+					}
+					
+
+				}
+			};
+			vista.getBtnHacerCroquetas().addActionListener(actionListenerCrearCroquetas);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos", "Campos", JOptionPane.ERROR_MESSAGE);
+		}
+
+	}
+
+	public static void mostrarFicheros(ArrayList<String> arrayResultados) {
+		vista.getTextArea().setText("");
+		for (String linea : arrayResultados) {
+			vista.getTextArea().append(linea + "\n");
+		}
+	}
+
+}

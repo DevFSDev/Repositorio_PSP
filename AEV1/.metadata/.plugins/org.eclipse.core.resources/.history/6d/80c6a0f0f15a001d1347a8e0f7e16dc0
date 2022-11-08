@@ -1,0 +1,224 @@
+package florida;
+
+import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * Clase Vista
+ * @author lopez
+ *
+ */
+public class Vista {
+
+	private JFrame frame;
+	private JButton btnConexionBD;
+	private JButton btnXML;
+	private JTextField textFieldLogin;
+	private JButton btnAcceder;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JButton btnEstructura;
+	private JScrollPane scrollPane;
+	private JTextArea textArea;
+	private JLabel lblNewLabel_5;
+	private JButton btnDesconexionBD;
+	private JLabel lblNewLabel_6;
+	private JTextField textFieldEstructuraTablas;
+	private JButton btnEstructuraTablas;
+	private JButton btnContenidoTabla;
+	private JLabel lblNewLabel_7;
+	private JTextField textFieldContenidoTabla;
+	private JLabel lblNewLabel_8;
+	private JTextField textFieldConsultaSQL;
+	private JButton btnConsultaSQL;
+	private JPasswordField textFieldContrasenya;
+
+	/**
+	 * Metodo constructor de la clase Vista, se inicializan todos los elementos de
+	 * la interfaz grafica
+	 */
+	public Vista() {
+		initialize();
+	}
+
+	/**
+	 * Metodo en el que se recogen todos los elementos de la interfaz
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 792, 574);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+
+		login();
+
+		this.frame.setVisible(true);
+	}
+
+	private void login() {
+
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(192, 192, 192));
+		desktopPane.setBounds(0, 0, 776, 535);
+		frame.getContentPane().add(desktopPane);
+
+		btnConexionBD = new JButton("Conectarse a BD");
+		btnConexionBD.setBounds(176, 36, 239, 27);
+		desktopPane.add(btnConexionBD);
+		btnConexionBD.setFont(new Font("Tahoma", Font.PLAIN, 11));
+
+		btnXML = new JButton("Conectar XML");
+		btnXML.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnXML.setBounds(10, 38, 127, 23);
+		desktopPane.add(btnXML);
+
+		textFieldLogin = new JTextField();
+		textFieldLogin.setBounds(157, 114, 179, 27);
+		desktopPane.add(textFieldLogin);
+		textFieldLogin.setColumns(10);
+
+		JLabel lblNewLabel = new JLabel("Introduce tu login:");
+		lblNewLabel.setBounds(10, 127, 113, 14);
+		desktopPane.add(lblNewLabel);
+
+		JLabel lblNewLabel_1 = new JLabel("Introduce tu contraseña:");
+		lblNewLabel_1.setBounds(10, 165, 179, 14);
+		desktopPane.add(lblNewLabel_1);
+
+		btnAcceder = new JButton("Acceder");
+		btnAcceder.setBounds(348, 134, 89, 23);
+		desktopPane.add(btnAcceder);
+
+		lblNewLabel_2 = new JLabel("1º  Leemos el archivo XML");
+		lblNewLabel_2.setBounds(10, 11, 156, 14);
+		desktopPane.add(lblNewLabel_2);
+
+		lblNewLabel_3 = new JLabel("2º Intentamos conectarnos a la BD");
+		lblNewLabel_3.setBounds(176, 11, 239, 14);
+		desktopPane.add(lblNewLabel_3);
+
+		lblNewLabel_4 = new JLabel("3º Accedemos mediante nuestras credenciales de acceso");
+		lblNewLabel_4.setBounds(10, 89, 288, 14);
+		desktopPane.add(lblNewLabel_4);
+
+		btnEstructura = new JButton("Mostrar tablas");
+		btnEstructura.setBounds(10, 278, 120, 23);
+		desktopPane.add(btnEstructura);
+
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(292, 229, 453, 280);
+		desktopPane.add(scrollPane);
+
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+
+		lblNewLabel_5 = new JLabel("Resultados:");
+		lblNewLabel_5.setBounds(290, 208, 89, 14);
+		desktopPane.add(lblNewLabel_5);
+
+		btnDesconexionBD = new JButton("Desconectar la BD");
+		btnDesconexionBD.setBounds(435, 36, 239, 27);
+		desktopPane.add(btnDesconexionBD);
+
+		lblNewLabel_6 = new JLabel("Mostrar la estructura de las tablas");
+		lblNewLabel_6.setBounds(10, 323, 207, 14);
+		desktopPane.add(lblNewLabel_6);
+
+		textFieldEstructuraTablas = new JTextField();
+		textFieldEstructuraTablas.setBounds(10, 348, 142, 20);
+		desktopPane.add(textFieldEstructuraTablas);
+		textFieldEstructuraTablas.setColumns(10);
+
+		btnEstructuraTablas = new JButton("Mostrar");
+		btnEstructuraTablas.setBounds(157, 347, 120, 23);
+		desktopPane.add(btnEstructuraTablas);
+
+		btnContenidoTabla = new JButton("Mostrar");
+		btnContenidoTabla.setBounds(157, 418, 120, 23);
+		desktopPane.add(btnContenidoTabla);
+
+		lblNewLabel_7 = new JLabel("Mostrar el contenido de la tabla");
+		lblNewLabel_7.setBounds(10, 393, 194, 14);
+		desktopPane.add(lblNewLabel_7);
+
+		textFieldContenidoTabla = new JTextField();
+		textFieldContenidoTabla.setBounds(10, 419, 142, 20);
+		desktopPane.add(textFieldContenidoTabla);
+		textFieldContenidoTabla.setColumns(10);
+
+		lblNewLabel_8 = new JLabel("Ejecuta tu consulta SQL");
+		lblNewLabel_8.setBounds(10, 464, 156, 14);
+		desktopPane.add(lblNewLabel_8);
+
+		textFieldConsultaSQL = new JTextField();
+		textFieldConsultaSQL.setBounds(10, 489, 142, 20);
+		desktopPane.add(textFieldConsultaSQL);
+		textFieldConsultaSQL.setColumns(10);
+
+		btnConsultaSQL = new JButton("Mostrar");
+		btnConsultaSQL.setBounds(157, 486, 125, 23);
+		desktopPane.add(btnConsultaSQL);
+
+		textFieldContrasenya = new JPasswordField();
+		textFieldContrasenya.setBounds(159, 155, 177, 27);
+		desktopPane.add(textFieldContrasenya);
+
+	}
+
+	public JButton getBtnDesconexionBD() {
+		return btnDesconexionBD;
+	}
+
+	public JButton getBtnConexionBD() {
+		return btnConexionBD;
+	}
+
+	public JButton getBtnXML() {
+		return btnXML;
+	}
+
+	public JTextField getTextFieldLogin() {
+		return textFieldLogin;
+	}
+
+	public JTextField getTextFieldContrasenya() {
+		return textFieldContrasenya;
+	}
+
+	public JButton getBtnAcceder() {
+		return btnAcceder;
+	}
+
+	public JButton getBtnEstructura() {
+		return btnEstructura;
+	}
+
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
+	public JButton getBtnEstructuraTablas() {
+		return btnEstructuraTablas;
+	}
+
+	public JTextField getTextFieldEstructuraTablas() {
+		return textFieldEstructuraTablas;
+	}
+
+	public JButton getBtnContenidoTabla() {
+		return btnContenidoTabla;
+	}
+
+	public JTextField getTextFieldContenidoTabla() {
+		return textFieldContenidoTabla;
+	}
+
+	public JTextField getTextFieldConsultaSQL() {
+		return textFieldConsultaSQL;
+	}
+
+	public JButton getBtnConsultaSQL() {
+		return btnConsultaSQL;
+	}

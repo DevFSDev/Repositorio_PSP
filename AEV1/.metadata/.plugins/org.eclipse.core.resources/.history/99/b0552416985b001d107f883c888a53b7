@@ -1,0 +1,63 @@
+package florida;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+
+public class Lanzadora {
+	public static Integer tiempoEspera[];
+	public static String croquetas_nombres[];
+	public static Integer croquetas_cantidades[];
+	public static Integer prioridad[];
+	public static int croq_pausa = 0;
+	public int indice;
+	public static int contador = 0;
+	public static int terminadas = 0;
+	public static long tiempoInicio;
+	public static int proceso;
+	public Thread hilo;
+	public static long fin = 0; // Tiempo ejecución
+	public static long inicio = 0; // Tiempo ejecución
+	public static Vista vista;
+	private static ActionListener actionListenerCrearCroquetas;
+
+	public static void main(String[] args) throws InterruptedException {
+
+		vista = new Vista();
+
+		try {
+			actionListenerCrearCroquetas = new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int Pollo = Integer.parseInt(vista.getTextFieldPollo().getText());
+					int Queso = Integer.parseInt(vista.getTextFieldQueso().getText());
+					int Bacalao = Integer.parseInt(vista.getTextFieldBacalao().getText());
+					int Jamon = Integer.parseInt(vista.getTextFieldJamon().getText());
+
+					int prioridadPollo = Integer.parseInt(vista.getTextFieldPrioridadPollo().getText());
+					int prioridadQueso = Integer.parseInt(vista.getTextFieldPrioridadQueso().getText());
+					int prioridadBacalao = Integer.parseInt(vista.getTextFieldPrioridadBacalao().getText());
+					int prioridadJamon = Integer.parseInt(vista.getTextFieldPrioridadJamon().getText());
+
+					try {
+						Procesadora.lanzarCroquetas(Jamon, Pollo, Bacalao, Queso, prioridadJamon, prioridadPollo, prioridadBacalao,  prioridadQueso,
+								prioridadQueso);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+				}
+			};
+
+			vista.getBtnHacerCroquetas().addActionListener(actionListenerCrearCroquetas);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos", "C", JOptionPane.ERROR_MESSAGE);
+		}
+
+	}
+
+
+}

@@ -1,0 +1,104 @@
+package florida;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Vista extends JFrame {
+
+	private JPanel contentPane;
+	static JTextField textFieldJamon;
+	static JTextField textFieldPollo;
+	static JTextField textFieldQueso;
+	static JTextField textFieldBacalao;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Vista frame = new Vista();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Vista() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 738, 439);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Pon la cantidad de croquetas que quieres de cada tipo:");
+		lblNewLabel.setBounds(71, 45, 324, 33);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Croquetas de jamón:");
+		lblNewLabel_1.setBounds(59, 153, 136, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Croquetas de pollo:");
+		lblNewLabel_2.setBounds(59, 198, 136, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Croquetas de queso:");
+		lblNewLabel_3.setBounds(59, 235, 136, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Croquetas de bacalao:");
+		lblNewLabel_4.setBounds(59, 277, 136, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		textFieldJamon = new JTextField();
+		textFieldJamon.setBounds(205, 150, 86, 20);
+		contentPane.add(textFieldJamon);
+		textFieldJamon.setColumns(10);
+		
+		textFieldPollo = new JTextField();
+		textFieldPollo.setBounds(205, 195, 86, 20);
+		contentPane.add(textFieldPollo);
+		textFieldPollo.setColumns(10);
+		
+		textFieldQueso = new JTextField();
+		textFieldQueso.setBounds(205, 232, 86, 20);
+		contentPane.add(textFieldQueso);
+		textFieldQueso.setColumns(10);
+		
+		textFieldBacalao = new JTextField();
+		textFieldBacalao.setBounds(205, 274, 86, 20);
+		contentPane.add(textFieldBacalao);
+		textFieldBacalao.setColumns(10);
+	}
+	
+	public static JTextField getTextFieldJamon() {
+		return textFieldJamon;
+	}
+	public static JTextField getTextFieldPollo() {
+		return textFieldPollo;
+	}
+
+	public static JTextField getTextFieldQueso() {
+		return textFieldQueso;
+	}
+
+	public static JTextField getTextFieldBacalao() {
+		return textFieldBacalao;
+	}
+
+	
+}
